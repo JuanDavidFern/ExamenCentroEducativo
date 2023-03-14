@@ -328,7 +328,10 @@ public class Ventana extends JFrame {
 					contMinus++;
 			}
 			if (contMayus >= 3 || contMinus >= 3)
-				guardar();
+				if (jtfUrl.getText().startsWith("http://") || jtfUrl.getText().startsWith("https://")) {
+					guardar();
+				}
+				
 			else
 				JOptionPane.showMessageDialog(null, "El campo codigo no comple los requisitos");
 		}
