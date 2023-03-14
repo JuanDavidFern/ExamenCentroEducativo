@@ -25,6 +25,8 @@ import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -287,7 +289,12 @@ public class Ventana extends JFrame {
 		JButton btnNewButton_2 = new JButton("guardar");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				validacion();
+				try {
+					validacion();
+				} catch (NumberFormatException | SQLException | ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
@@ -306,7 +313,7 @@ public class Ventana extends JFrame {
 		llenarJcb();
 	}
 
-	private void validacion() {
+	private void validacion() throws NumberFormatException, SQLException, ParseException {
 		String str = jtfCodigo.getText();
 		int contMayus = 0, contMinus = 0, contNum = 0, contNoAlfa = 0;
 		String str1[] = str.split("[ ]{1,}");
@@ -327,13 +334,14 @@ public class Ventana extends JFrame {
 		}
 	}
 	
-	private void guardar() {
+	private void guardar() throws NumberFormatException, SQLException, ParseException {
 		Materia m = new Materia();
 		m.setId(Integer.parseInt(jtfId.getText()));
 		m.setNombre(jtfNombre.getText());
 		m.setCodigo(jtfCodigo.getText());
 		m.setUrl(jtfUrl.getText());
 		m.setAdmiteMatricula(check.getAutoscrolls());
+		controladores.ControladorMateria.update(m);
 
 	}
 
