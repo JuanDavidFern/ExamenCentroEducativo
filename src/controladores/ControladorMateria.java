@@ -19,7 +19,7 @@ public class ControladorMateria {
 	public static void update(Materia mat) throws NumberFormatException, SQLException, ParseException {
 		conn = controladores.ConnectionManagerV1.getConexion();
 		PreparedStatement ps = conn.prepareStatement(
-				"update centroeducativo.materia set nombre = ?, codigo = ?, urlClassroom = ?, admiteMatricula = ?,where id =" + mat.getId());
+				"update centroeducativo.materia set nombre = ?, codigo = ?, urlClassroom = ?, admiteMatricula = ? where id =" + mat.getId());
 
 		ps.setString(1, mat.getNombre());
 		ps.setString(2, mat.getCodigo());

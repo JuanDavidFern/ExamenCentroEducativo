@@ -163,7 +163,13 @@ public class Ventana extends JFrame {
 		JButton btnNewButton_1 = new JButton("ver materia");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				leerJcomboMateria();
+				//Para que no salte una exception al pulsarlo en blanco
+				if (jcbMateria.getSelectedItem() == null) {
+					
+				}else {
+					leerJcomboMateria();
+				}
+				
 			}
 		});
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
@@ -291,6 +297,7 @@ public class Ventana extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					validacion();
+					cargarMaterias();
 				} catch (NumberFormatException | SQLException | ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -344,7 +351,7 @@ public class Ventana extends JFrame {
 		m.setCodigo(jtfCodigo.getText());
 		m.setUrl(jtfUrl.getText());
 		m.setAdmiteMatricula(check.getAutoscrolls());
-		controladores.ControladorMateria.update(m);
+		ControladorMateria.update(m);
 
 	}
 
