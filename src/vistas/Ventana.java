@@ -309,7 +309,7 @@ public class Ventana extends JFrame {
 		gbc_btnNewButton_2.gridx = 1;
 		gbc_btnNewButton_2.gridy = 11;
 		contentPane.add(btnNewButton_2, gbc_btnNewButton_2);
-
+		
 		JPanel panel = new JPanel();
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.insets = new Insets(0, 0, 0, 5);
@@ -351,7 +351,9 @@ public class Ventana extends JFrame {
 		m.setCodigo(jtfCodigo.getText());
 		m.setUrl(jtfUrl.getText());
 		m.setAdmiteMatricula(check.getAutoscrolls());
+		m.setFechaInicio(new SimpleDateFormat("dd/MM/yyyy").parse(jtfFecha.getText()));
 		ControladorMateria.update(m);
+		
 
 	}
 

@@ -1,6 +1,6 @@
 package modelos;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Materia {
 	private int id;
